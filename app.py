@@ -17,7 +17,6 @@ def inicializa_sesion():
 def inicio():
     session["moneda"]=inicializa_sesion()
     if request.method=="POST":
-        # Venimos del formulario
         session["moneda"]=request.form.get("divisa")
     url='/cryptocurrency/listings/latest'
     parametros={'start':'1','limit':'10','convert':session["moneda"]}
@@ -79,13 +78,5 @@ def detalles(id):
     else:
         abort(404)
 
-
-app.run('0.0.0.0',debug=True)
-
-#La aplicación web debe tener una vista tipo lista, donde se vea una lista de recursos de la API.
-#Debe tener también una vista detalle, donde se vea información concreta de algún recurso de la API.
-#Debe tener al menos un formulario para filtrar la información que se muestra.
-
-
-#La aplicación web debe tener hoja de estilo.
-#La aplicación web debe estar desplegada en Heroku.
+port=os.environ["PORT"]
+app.run('0.0.0.0',int(port),debug=True)

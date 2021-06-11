@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{%block titulo%}INICIO{%endblock%}
+{%block menu%}
+<nav class="navbar  navbar-fixed-top navbar-inverse">
+  <div class="container">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/" title="">01 : INICIO</a></li>
+        <li><a href="./about" title="">02 : LISTA CRIPTOS</a></li>
+        <li><a href="/convertir" title="">{{parametros.convert}}</a></li>
+      </ul>
+    </div> 
+  </div>
+</nav>
+{%endblock%}
+{%block contenido%}
+<div class="hero-full-container background-image-container white-text-container" style="background-image: url('/static/assets/images/space.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="hero-full-wrapper">
+          <div class="text-content">
+            <h1>TOP 10 CRIPTOMONEDAS<br>
+              <span id="typed-strings">
+                <span>
+                  {% for a in lista["data"] -%}
+                  <a>{{a.name}}</a>
+                  {% endfor -%}
+                </span>
+              </span>
+              <span id="typed"></span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}

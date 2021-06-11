@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{%block titulo%}CONVERTIR{%endblock%}
+{%block menu%}
+<nav class="navbar  navbar-fixed-top navbar-inverse">
+  <div class="container">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav ">
+        <li><a href="/" title="">01 : INICIO</a></li>
+        <li><a href="./about" title="">02 : LISTA CRIPTOS</a></li>
+        <li><a href="/convertir" title="">{{parametros.convert}}</a></li>
+        <!--<li><a href="./components.html" title="">05 : Components</a></li>-->
+      </ul>
+    </div> 
+  </div>
+</nav>
+{%endblock%}
+{%block contenido%}
+<div class="section-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="section-container-spacer text-center">
+            <h1 class="h2">CONVERTIR</h1>
+          </div>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <div class="form-group">
+                        <form method="post" name="contact" action="/listado">
+                          <label for="author">DIME EL NUMERO DE DIVISAS A MOSTRAR</label>
+                          <input type="text" name="informacion" value="{{formulario}} "  class="required input_field"/>
+                          <input type="submit" class="submit_btn" value="Enviar" />
+                        </form>
+                        <br><br><br><br>
+                        <form method="post" name="contact" action="/">
+                          {% if lista%}
+                          <label for="author">ESCOJE LA DIVISIDA</label>
+                          <select name="divisa">
+                            {% for a in lista["data"] -%}
+                            <option type="text" name="divisa" value="{{a.symbol}}">{{a.symbol}}</option>
+                            {% endfor -%}
+                          </select>
+                          <input type="submit" class="submit_btn" value="Aplicar" />
+                            {% endif %}
+                        </form>
+                    </div>
+                  </div>
+            </div>
+          </div>
+       </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}
